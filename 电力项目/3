@@ -1,0 +1,89 @@
+
+void interraput()
+{
+	int r = readByte();
+	if(r == 0xFE)
+	{
+		setSystemActive(1);
+	}
+	unsigned char tmpch;
+	tmpch = UARTRBR;
+	if(tmpch )//head
+	{
+		recstatu = 1;
+		ccnt	 = 0 ;
+		packerflag = 0;
+		return ;
+	}
+	if(tmpch )//tail
+	{
+		recstatu = 0;
+		packerflag = 1;
+		return ;
+	}
+	if(recstatu ==1)
+	{
+		rxbuf[ccnt++] = tmpch;
+	}
+
+}
+
+typedef struct
+{
+    int id;
+    char name[10];
+    int score;
+}student;
+typedef struct
+{
+	unsigned char addr[6];
+	unsigned char head;
+	unsigned char controlCode;
+	unsigned char len;
+	//unsigned char* data;
+	//unsigned char csc;
+
+}data;
+
+int struct_array(char* des, student *src)
+{
+    int num;
+    char *temp = (char *)  src ;
+    for(num=0;num<sizeof(student);num++)
+        *(des+num)= temp[num];
+    return num;
+
+}
+
+
+void array_struct(student * des ,char * src)
+{
+
+    char* temp = (char *) des;
+    int num;
+    for(num=0 ;num < sizeof(student);num++)
+        *(temp++)= src[num] ;
+}
+
+
+void show_student(student * name)
+{
+    printf("id is : %d\n",name->id);
+    printf("name is : %s\n",name->name);
+    printf("score is : %d \n",name->score);
+
+}
+
+
+void show_array(char *str ,int len )
+{
+    printf("len is : %d \n" ,len);
+
+    while(len--)
+    {
+        putchar('|');
+        putchar(*str++);
+    }
+    printf("|\n");
+}
+
