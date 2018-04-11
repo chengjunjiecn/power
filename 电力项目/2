@@ -1,0 +1,27 @@
+//https://blog.csdn.net/parkourxiang/article/details/50659102
+int isSystemActive = 0;
+int getSystemActive()
+{
+	return isSystemActive;
+}
+void setSystemActive(int state )
+{
+	isSystemActive = state;
+}
+
+int readByte()
+{
+}
+int writeByte()
+{
+}
+void ledSlink()
+{
+
+}
+void systemGotoSleep()
+{
+}
+void handData()
+{
+}
