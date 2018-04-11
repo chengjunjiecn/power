@@ -1,0 +1,24 @@
+typedef struct
+{
+	unsigned char addr[6];
+	unsigned char head;
+	unsigned char controlCode;
+	unsigned char len;
+	unsigned char* data;
+	unsigned char csc;
+
+}
+int main()
+{
+	while(1)
+	{
+		if(isSystemActived())
+		{
+			ledSlink();
+			if(packerflag)
+			{
+				handData();
+			}
+		}
+	}
+}
