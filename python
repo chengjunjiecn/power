@@ -1,6 +1,4 @@
-pip install pyserial-3.1.1-py2.py3-none-any.whl 
-1
-2. Demo
+
 import serial
 from time import sleep
 
