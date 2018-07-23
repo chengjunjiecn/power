@@ -13,7 +13,7 @@ def recv(serial):
     return data
 
 if __name__ == '__main__':
-    serial = serial.Serial('COM5', 9600, timeout=0.5)  #/dev/ttyUSB0
+    serial = serial.Serial('COM9', 9600, timeout=0.5)  #/dev/ttyUSB0
     if serial.isOpen() :
         print("open success")
     else :
