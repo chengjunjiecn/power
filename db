@@ -21,3 +21,10 @@ db.close()
 
 
 #http://www.runoob.com/python3/python3-mysql.html
+
+
+create table data(id int not null auto_increment,
+   create_time timestamp NOT NULL DEFAULT NOW(),
+   value FLOAT,
+   PRIMARY KEY (`id`)
+   );
