@@ -1,6 +1,36 @@
-
+#coding=utf-8
+ 
+import pymysql
 import serial
 from time import sleep
+ 
+# 打开数据库连接
+db = pymysql.connect("localhost","root","samsung","test" )
+ 
+# 使用 cursor() 方法创建一个游标对象 cursor
+cursor = db.cursor()
+ 
+
+
+def insertDb(value):
+    data=str(value) 
+    # 使用 execute()  方法执行 SQL 查询 
+    sqlString = "insert into data(value) values(" +data+")"
+    try:
+       # 执行sql语句
+       cursor.execute(sqlString)
+       # 提交到数据库执行
+       db.commit()
+       print("insert ok")
+    except:
+       # 如果发生错误则回滚
+       db.rollback()
+       print("insert error")
+    # 关闭数据库连接
+    db.close()
+
+
+
 
 def recv(serial):
     while True:
@@ -23,4 +53,6 @@ if __name__ == '__main__':
         data =recv(serial)
         if data != b'' :
             print("receive : ",data)
+            insertDb(data)
             serial.write(data) #数据写回
+ 
