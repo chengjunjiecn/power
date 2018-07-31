@@ -25,6 +25,6 @@ db.close()
 
 create table data(id int not null auto_increment,
    create_time timestamp NOT NULL DEFAULT NOW(),
-   value FLOAT,
+   value TEXT,
    PRIMARY KEY (`id`)
    );
