@@ -1,3 +1,10 @@
+create table data(id int not null auto_increment,
+   create_time timestamp NOT NULL DEFAULT NOW(),
+   value TEXT,
+   PRIMARY KEY (`id`)
+   );
+
+
 #coding=utf-8
  
 import pymysql
@@ -13,9 +20,9 @@ cursor = db.cursor()
 
 
 def insertDb(value):
-    data=str(value) 
+    data=value 
     # 使用 execute()  方法执行 SQL 查询 
-    sqlString = "insert into data(value) values(" +data+")"
+    sqlString = "insert into data(value) values('" +data+"')"
     try:
        # 执行sql语句
        cursor.execute(sqlString)
